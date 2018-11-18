@@ -75,6 +75,10 @@ public class TagTagRepository extends AbstractRepository {
     public JSONObject getByTag1Id(final String tag1Id, final int currentPageNum, final int pageSize)
             throws RepositoryException {
         final List<Filter> filters = new ArrayList<>();
+        if (filters.size() < 2)
+        {
+            return null;
+        }
         filters.add(new PropertyFilter(Tag.TAG + "1_" + Keys.OBJECT_ID, FilterOperator.EQUAL, tag1Id));
         filters.add(new PropertyFilter(Common.WEIGHT, FilterOperator.GREATER_THAN_OR_EQUAL, WEIGHT));
 

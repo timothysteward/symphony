@@ -75,9 +75,9 @@ public class FollowRepository extends AbstractRepository {
     public JSONObject getByFollowerIdAndFollowingId(final String followerId, final String followingId, final int followingType)
             throws RepositoryException {
         final List<Filter> filters = new ArrayList<Filter>();
-        filters.add(new PropertyFilter(Follow.FOLLOWER_ID, FilterOperator.EQUAL, followerId));
-        filters.add(new PropertyFilter(Follow.FOLLOWING_ID, FilterOperator.EQUAL, followingId));
-        filters.add(new PropertyFilter(Follow.FOLLOWING_TYPE, FilterOperator.EQUAL, followingType));
+        filters.add(new PropertyFilter(Follow.FOLLOWER_ID, FilterOperator.ANY, followerId));
+        filters.add(new PropertyFilter(Follow.FOLLOWING_ID, FilterOperator.ANY, followingId));
+        filters.add(new PropertyFilter(Follow.FOLLOWING_TYPE, FilterOperator.ANY, followingType));
 
         final Query query = new Query().setFilter(new CompositeFilter(CompositeFilterOperator.AND, filters));
 
